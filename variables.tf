@@ -1,26 +1,13 @@
 variable "location" {
   description = "Azure location."
   type        = string
+  default     = "norwayeast"
 }
 
 variable "location_short" {
   description = "Short string for Azure location."
   type        = string
-}
-
-variable "client_name" {
-  description = "Client name/account used in naming"
-  type        = string
-}
-
-variable "environment" {
-  description = "Project environment"
-  type        = string
-}
-
-variable "stack" {
-  description = "Project stack name"
-  type        = string
+  default     = "ne1"
 }
 
 variable "resource_group_name" {
@@ -39,12 +26,12 @@ variable "os_type" {
 }
 
 variable "sku_name" {
-  description = "The SKU for the plan. Possible values include B1, B2, B3, D1, F1, FREE, I1, I2, I3, I1v2, I2v2, I3v2, P1v2, P2v2, P3v2, P0v3, P1v3, P2v3, P3v3, S1, S2, S3, SHARED, Y1, EP1, EP2, EP3, WS1, WS2, and WS3."
+  description = "The SKU for the plan. Possible values include B1, B2, B3, D1, F1, FREE, I1v2, I2v2, I3v2, P1v2, P2v2, P3v2, P0v3, P1v3, P2v3, P3v3, S1, S2, S3, SHARED, Y1, EP1, EP2, EP3, WS1, WS2, and WS3."
   type        = string
 
   validation {
-    condition     = try(contains(["B1", "B2", "B3", "D1", "F1", "FREE", "I1", "I2", "I3", "I1v2", "I2v2", "I3v2", "P1v2", "P2v2", "P3v2", "P0v3", "P1v3", "P2v3", "P3v3", "S1", "S2", "S3", "SHARED", "Y1", "EP1", "EP2", "EP3", "WS1", "WS2", "WS3"], var.sku_name), true)
-    error_message = "The `sku_name` value must be valid. Possible values include B1, B2, B3, D1, F1, FREE, I1, I2, I3, I1v2, I2v2, I3v2, P1v2, P2v2, P3v2, P0v3, P1v3, P2v3, P3v3, S1, S2, S3, SHARED, Y1, EP1, EP2, EP3, WS1, WS2, and WS3."
+    condition     = try(contains(["B1", "B2", "B3", "D1", "F1", "FREE", "I1v2", "I2v2", "I3v2", "P1v2", "P2v2", "P3v2", "P0v3", "P1v3", "P2v3", "P3v3", "P1mv3", "P2mv3", "S1", "S2", "S3", "SHARED", "Y1", "EP1", "EP2", "EP3", "WS1", "WS2", "WS3", "FC1", ], var.sku_name), true)
+    error_message = "The `sku_name` value must be valid. Possible values include B1, B2, B3, D1, F1, FREE, I1v2, I2v2, I3v2, P1v2, P2v2, P3v2, P0v3, P1v3, P2v3, P3v3, P1mv3, P2mv3, S1, S2, S3, SHARED, Y1, EP1, EP2, EP3, WS1, WS2, WS3 and FC1"
   }
 }
 
@@ -57,7 +44,7 @@ variable "app_service_environment_id" {
 variable "worker_count" {
   description = "The number of Workers (instances) to be allocated."
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "maximum_elastic_worker_count" {
