@@ -15,6 +15,11 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "workload" {
+  type        = string
+  description = "Workload name"
+}
+
 variable "os_type" {
   description = "The O/S type for the App Services to be hosted in this plan. Possible values include `Windows`, `Linux`, and `WindowsContainer`."
   type        = string
